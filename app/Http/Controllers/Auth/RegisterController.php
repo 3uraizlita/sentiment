@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\model\userdetail;
 
 class RegisterController extends Controller
 {
@@ -62,10 +63,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user=User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'occupation' => $data['occupation'],
+            'gender' => $data['gender'],
             'password' => bcrypt($data['password']),
         ]);
-    }
+
+    $userdetail = new Userdetail();
+    $userdetail ->user_id = user::where('email',$data['email'])->value('id');
+    $userdetail ->occupation = $data['occupation'];
+    $userdetail ->gender = $data['gender'];
+    $userdetail ->save();
+       
+    return $user; 
+
+    // whatever else you need to do - send email, etc  
+}
 }

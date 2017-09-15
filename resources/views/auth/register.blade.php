@@ -39,6 +39,34 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('occupation') ? ' has-error' : '' }}">
+                            <label for="occupation" class="col-md-4 control-label">Occupation </label>
+
+                            <div class="col-md-6">
+                                <input id="occupation" type="occupation" class="form-control" name="occupation" value="{{ old('occupation') }}" required>
+
+                                @if ($errors->has('occupation'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('occupation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="gender" class="col-md-4 control-label">Gender</label>
+
+                            <div class="col-md-6">
+                                <input id="gender" type="gender" class="form-control" name="gender" value="{{ old('gender') }}" required>
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
@@ -60,6 +88,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
