@@ -19,3 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('twitterUserTimeLine', 'TwitterController@twitterUserTimeLine');
+Route::post('tweet', ['as'=>'post.tweet','uses'=>'TwitterController@tweet']);
